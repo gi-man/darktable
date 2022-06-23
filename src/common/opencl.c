@@ -2845,7 +2845,7 @@ void dt_opencl_check_device_available(const int devid)
     {
       // we always leave a safety margin, at least 200MB for level large
       _opencl_get_unused_device_mem(devid);
-      cl->dev[devid].used_available = cl->dev[devid].tuned_available * (32 - MAX(0, 2 - level)) / 32;
+      cl->dev[devid].used_available = (cl->dev[devid].tuned_available * (32 - MAX(0, 2 - level)) / 32) - 1;
     }
   }
   else
